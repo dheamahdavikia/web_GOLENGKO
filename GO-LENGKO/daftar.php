@@ -26,6 +26,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="../tinymce/tinymce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            selector:"#mytextarea"
+
+        });
+    </script>
 
 </head>
 
@@ -45,7 +53,10 @@
                           </div> 
                           <div class="form-group">  
                             <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>  
-                          </div>  
+                          </div> 
+                          <div class="form-group">
+                             <textarea name="alamat" id="mytextarea" class="form-control" rows="5" placeholder="Alamat"></textarea>
+                        </div> 
                           <div class="form-group">  
                             <input class="form-control" placeholder="Password" name="password" type="password" autofocus>  
                           </div>

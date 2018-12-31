@@ -1,10 +1,11 @@
 <?php
-    session_start();
-    if(!$_SESSION['nama']){
-    header (" 05_contact.php");
-
+ session_start();
+ if(empty($_SESSION['nama'])){
+    header ("Location : login.php");
 }
-    $user=$_SESSION['user'];
+else{
+    $user = $_SESSION['nama'];
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -32,7 +33,7 @@
                 <a class="logo" href="index.php"><img src="download (2).jpg" alt="Logo"></a>
 
                 <div class="right-area">
-                        <h6><a class="plr-20 color-white btn-fill-primary" href="login.php">ORDER: 085 353 165 165</a></h6>
+                        <h6><a class="plr-20 color-white btn-fill-primary" href="">ORDER: 085 353 165 165</a></h6>
                 </div><!-- right-area -->
 
                 <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
@@ -40,6 +41,7 @@
                 <ul class="main-menu font-mountainsre" id="main-menu">
                       
                         <li><a href="05_contact.php">ORDER NOW</a></li>
+                        <?php echo $user;?>
                         <li><a href="logout.php">LOGOUT</a></li>
                 </ul>
 
@@ -77,38 +79,56 @@
                 </div>
 
                 <form class="form-style-1 placeholder-1">
-                    <form action="05_contact.php" method="POST">
+                    <form action="" method="POST">
                         <div class="row">
-                            <input class="mb-20" type="text" placeholder="Nama" name="Nama">  
+                            <input class="mb-20" type="text" placeholder="Nama" name="nama">  
                               
-                            <input class="mb-20" type="text" placeholder="Alamat" name="Alamat">
-                            <textarea class="h-200x ptb-20" placeholder="Pesan" name="Pesan"></textarea>
+                            <input class="mb-20" type="text" placeholder="Alamat" name="alamat">
+                            <textarea class="h-200x ptb-20" placeholder="Pesan" name="pesan"></textarea>
                         </div>
                         <br><!-- row -->
-                       <input class="btn btn-lg btn-success btn-block" type="submit" value="submit" nanme="submit">
+                       <input class="btn btn-lg btn-success btn-block" type="submit" value="submit" name="submit">
                     </form>
                 </form>
         </div><!-- container -->
 </section>
 
-<?php
-        $nama=$_POST['nama'];
-        $alamat=$_POST['alamat'];
-        $pesan=$_POST['pesan'];
-        
-        $conn = new mysqli ("localhost","root","","lengko");
-        if ($conn -> connect_error){
-            die ("Koneksi database gagal : ".$conn -> connect_error);
-        } else{
-            $sql = "INSERT INTO pesanan (nama, alamat, pesan) VALUES ($nama','$alamat','$pesan')";
-            $hasil = $conn -> query($sql);
+<?php   
+        if(!empty($_GET['nama']) && !empty($_GET['alamat']) && !empty($_GET['pesan'])){ 
+        $nama =$_GET['nama'];
+        $alamat =$_GET['alamat'];
+        $pesan = $_GET['pesan'];
 
-            echo "nama      : $nama <br>";
-            echo "alamat     : $alamat <br>";
-            echo "pesan     : $pesan<br>";
+        include("include/koneksi.php");
+        
+       
+            $sql = "INSERT INTO pesanan VALUES ('','$nama','$alamat','$pesan')";
+            $hasil = mysqli_query($conn, $sql);
+
+
+            if(!$hasil){
+                die("Query Erro".mysqli_error($conn));
+            }
+
+
+            echo " PESANAN ATAS NAMA : <br>";
+             echo"<br>";
+
+            echo "Nama      : $nama <br>";
+            echo "Alamat     : $alamat <br>";
+            echo "Pesan     : $pesan<br>";
+            echo"<br>";
+             echo"<br>";
+              echo"<br>";
            
             
-            echo "Simpan pesanan berhasil dilakukan";
+            echo "Pesanan anda berhasil terkirim, Terima Kasih sudah menggunakan GO-LENGKO";
+            echo"<br>";
+             echo"<br>";
+              echo"<br>";
+        }
+        else{
+            echo "ini mah belum di isi";
         }
     ?>
 
@@ -134,14 +154,7 @@
                         <a href="mailto:yourmail@gmail.com"> LengkoMamahDhea@gmail.com</a>
                 </div>
 
-                <ul class="icon mt-30">
-                        <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                        <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                        <li><a href="#"><i class="ion-social-vimeo"></i></a></li>
-                </ul>
+               
 
                 <p class="color-light font-9 mt-50 mt-sm-30"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> DHEA MAHDAVIKIA <i class="ion-heart" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank"></a>

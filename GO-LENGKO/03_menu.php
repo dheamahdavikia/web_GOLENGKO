@@ -110,86 +110,26 @@
         <div class="container">
                 <div class="row">
 
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30 ">
-                                        <div class="s-left"><img class="br-3" src="ppes.jpg" alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Pepes Ayam</b><b class="color-primary float-right">Rp. 7.000</b></h5>
-                                                
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
+                                    <?php
+                        include 'include/koneksi.php';
+                    $result=(mysqli_query($conn, "SELECT * FROM makanan "));
+                    while ( $re = mysqli_fetch_array($result)) {
+                        # code...
+                    
+                    ?>
+
 
                         <div class="col-md-6">
                                 <div class="sided-90x mb-30 ">
-                                        <div class="s-left"><img class="br-3" src="ikan.jpg" alt="Menu Image"></div><!--s-left-->
+                                        <div class="s-left"><img class="br-3" src="<?php  echo '../images/'.$re['poto'];?>" width=="50px" height ="50px" alt="Menu Image"></div><!--s-left-->
                                         <div class="s-right">
-                                                <h5 class="mb-10"><b>Ikan goreng</b><b class="color-primary float-right">Rp.10.000</b></h5>
+                                                <h5 class="mb-10"><b><?php echo $re['nama_makanan']; ?></b><b class="color-primary float-right"><?php echo $re['harga'] ?></b></h5>
                                                 
                                         </div><!--s-right-->
                                 </div><!-- sided-90x -->
                         </div><!-- food-menu -->
-
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30 ">
-                                        <div class="s-left"><img class="br-3" src="Ayam.jpg" alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Ayam Goreng</b><b class="color-primary float-right">Rp. 12.000</b></h5>
-                                                
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
-
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30">
-                                        <div class="s-left"><img class="br-3" src="jengkol.jpg" alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Semur Jengkol</b><b class="color-primary float-right">Rp. 9.000</b></h5>
-                                                
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
-
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30">
-                                        <div class="s-left"><img class="br-3" src="telor.jpg" alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Telor Balado</b><b class="color-primary float-right">Rp. 6.000</b></h5>
-                                                
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
-
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30 ">
-                                        <div class="s-left"><img class="br-3" src="udang.jpg" alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Masak Udang</b><b class="color-primary float-right">Rp. 10.000</b></h5>
-                                               
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
-
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30">
-                                        <div class="s-left"><img class="br-3" src="perkedel.jpg"  alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Perkedel kentang</b><b class="color-primary float-right">Rp. 5.000</b></h5>
-                                                
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
-
-                        <div class="col-md-6">
-                                <div class="sided-90x mb-30 ">
-                                        <div class="s-left"><img class="br-3" src="gor.jpg" alt="Menu Image"></div><!--s-left-->
-                                        <div class="s-right">
-                                                <h5 class="mb-10"><b>Aneka Gorengan</b><b class="color-primary float-right">Rp. 2.000</b></h5>
-                                               
-                                        </div><!--s-right-->
-                                </div><!-- sided-90x -->
-                        </div><!-- food-menu -->
-                </div><!-- row -->
+                        <?php } ?>
+                  </div><!-- row -->
         </div><!-- container -->
 </section>
 
@@ -216,14 +156,7 @@
                         <a href="mailto:yourmail@gmail.com"> LengkoMamahDhea@gmail.com</a>
                 </div>
 
-                <ul class="icon mt-30">
-                        <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                        <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                        <li><a href="#"><i class="ion-social-vimeo"></i></a></li>
-                </ul>
+                
 
                 <p class="color-light font-9 mt-50 mt-sm-30"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> DHEA MAHDAVIKIA <i class="ion-heart" aria-hidden="true"></i> <a href="https://colorlib.com" target="_blank"></a>

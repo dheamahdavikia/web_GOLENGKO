@@ -43,15 +43,21 @@
                             <fieldset>
                                 <div class="form-group">
                                     <p>username</p>
-                                    <input class="form-control" placeholder="username" name="nama" type="name" autofocus>
+                                    <input class="form-control" placeholder="username" name="nama" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <p>Password</p>
-                                    <input class="form-control" placeholder="password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="password" name="password" type="password" >
                                 </div>
+                                Enter Image Text
+                                    <input name="captcha" type="text">
+                                    <img src="captcha.php" /><br>
+                                    <input name="submit" type="submit" value="Submit">
                                 
                                 <!-- Change this to a button or input when using this as a form -->
-                                 <a href="05_contact.php" class="btn btn-lg btn-success btn-block">Login</a>
+                                <!-- <button type="submit" name="submit" value="login">Login</button> -->
+                                <br>
+                                <p> belum punya akun ?</p>
                                  <a href="daftar.php" class="btn btn-lg btn-success btn-block">Daftar</a>
                             </fieldset>
                         </form>
@@ -80,33 +86,33 @@
 
     <?php
 
-    include("include/koneksi.php");
+//     include("include/koneksi.php");
 
-    if (isset($_POST['login']))
-    {
+//     if (isset($_POST['login']))
+//     {
     
-       $username= $_POST['nama'];
-       $password = $_POST['password'];
-       $sql="SELECT * FROM user WHERE nama='$nama' AND password='$password' ";
-       $result = mysqli_query($conn, $sql);
+//        $username= $_POST['nama'];
+//        $password = $_POST['password'];
+//        $sql="SELECT * FROM user WHERE nama='$nama' AND password='$password' ";
+//        $result = mysqli_query($conn, $sql);
 
-       if(mysqli_num_rows($result)>0){
-        while ($row = mysql_fetch_assoc($result))
-        {
-            $id = $row["id"];
-            $email=$row["email"];
-            session_start();
-            $_SESSION['nama']=$nama;
-            $_SESSION['user']=$user;
-        }
+//        if(mysqli_num_rows($result)>0){
+//         while ($row = mysql_fetch_assoc($result))
+//         {
+//             $id = $row["id"];
+//             $userl=$row["nama"];
+//             session_start();
+//             $_SESSION['nama']=$username;
+//             $_SESSION['user']=$user;
+//         }
        
         
     
-    header("location :05_contact.php");
-}
-else
-{
-    echo"<script>alert('username dan password yang anda masukan salah')</script>";
-}
-}
+//     header("location :05_contact.php");
+// }
+// else
+// {
+//     echo"<script>alert('username dan password yang anda masukan salah')</script>";
+// }
+// }
 ?>
